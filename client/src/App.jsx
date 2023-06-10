@@ -2,7 +2,7 @@
 function App() {
     return (
         <div className='App text-red-300'>
-            hello
+            hello there
         </div>
     )
 }
