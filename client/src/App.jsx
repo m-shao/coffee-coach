@@ -1,8 +1,8 @@
-import ChatUI from './components/ChatUI';
+import ChatAI from './components/ChatAI';
 
 function App() {
     return (
-        <ChatUI/>
+        <ChatAI/>
     )
 }
 

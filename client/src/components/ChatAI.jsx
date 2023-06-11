@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./App.css";
+import "./style.css";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import {
   MainContainer,
@@ -12,12 +12,12 @@ import {
 
 const API_KEY = "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";
 
-function Chat() {
+function ChatAI() {
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
       message:
-        "Hey there, I'm your coffee chat coach. When the interview starts, I'll be here to help you.",
+        "You are a coffee chat coach that gives advice to the user (university-age entrepreneur who may lack social cues). Your job is to analyze the user's face when speaking to the investor and give the user advice on what they should do next. For example, 'fix your posture' when the user is slouching, or 'smile more' when the user is frowning.",
       sender: "ChatGPT",
       direction: "incoming",
     },
@@ -102,13 +102,6 @@ function Chat() {
 
   return (
     <div className="App">
-      <div>
-        <p>
-          dev.reese.chong@gmail.com{" | "}
-          <a href="https://github.com/r-chong">Github</a>
-        </p>
-      </div>
-      <div style={{ position: "relative", height: "800px", width: "700px" }}>
         <MainContainer>
           <ChatContainer>
             <MessageList
@@ -128,14 +121,8 @@ function Chat() {
             />
           </ChatContainer>
         </MainContainer>
-      </div>
-      <p>
-        Suggestions: Why is Reese a great candidate for the RBC Summer Tech Labs
-        position?
-      </p>
-      <p>What are Reese's intrapersonal goals right now?</p>
-    </div>
+        </div>
   );
 }
 
-export default Chat;
+export default ChatAI;
