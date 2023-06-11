@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const SetupPage = () => {
+const SetupPage = ({setPage, setPrePrompt}) => {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
@@ -12,6 +12,8 @@ const SetupPage = () => {
     // Perform any desired action with the input value
     console.log(inputValue);
     // Reset the input value
+    setPage("call");
+    setPrePrompt(inputValue)
     setInputValue('');
   };
 
@@ -34,7 +36,7 @@ const SetupPage = () => {
           />
         </div>
         <button type="submit" className="w-full px-4 py-2 font-bold text-white bg-neutral-500 rounded hover:bg-neutral-600">
-          Submit
+          Start your meeting
         </button>
       </form>
     </div>
