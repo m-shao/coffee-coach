@@ -33,7 +33,7 @@ function Call() {
                 </div>
                 <div className='w-1/4 h-full justify-center rounded-md'>
                     {/* chat here */}
-                    <div className='w-full h-full bg-neutral-800 rounded-md'>
+                    <div className='w-full h-4/5 bg-neutral-800 rounded-md'>
                         <ChatAI/>
                     </div>
                 </div>

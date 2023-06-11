@@ -1,16 +1,5 @@
 import { useState } from "react";
-import "./style.css";
-import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  TypingIndicator,
-} from "@chatscope/chat-ui-kit-react";
-
-const API_KEY = "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";
+import { API_KEY } from "./key.js";
 
 function ChatAI() {
   const [typing, setTyping] = useState(false);
@@ -22,6 +11,8 @@ function ChatAI() {
       direction: "incoming",
     },
   ]);
+  const [inputMessage, setInputMessage] = useState("");
+
 
   const handleSend = async (message) => {
     const newMessage = {
@@ -67,7 +58,7 @@ function ChatAI() {
     const systemMessage = {
       role: "system",
       content:
-      "You are a coffee chat coach that gives advice to the user (university-age entrepreneur who may lack social cues). Your job is to analyze the user's face when speaking to the investor and give the user advice on what they should do next. For example, 'fix your posture' when the user is slouching, or 'smile more' when the user is frowning. Don't reply in paragraphs.",
+      "You are a coffee chat coach that gives advice to the user (university-age entrepreneur who may lack social cues). Your job is to analyze the user's face and emotions (THE FIRST RESPONSE WILL BE ABOUT HOW THE USER IS SURPRISED) when speaking to the investor and give the user advice on what they should do next. For example, 'fix your posture' when the user is slouching, or 'smile more' when the user is frowning. Don't reply in paragraphs.",
     };
 
     const apiRequestBody = {
@@ -101,27 +92,49 @@ function ChatAI() {
   }
 
   return (
-    <div className="App h-max">
-        <MainContainer>
-          <ChatContainer>
-            <MessageList
-              typingIndicator={
-                typing ? (
-                  <TypingIndicator content="Assistant is typing" />
-                ) : null
-              }
-            >
-              {messages.map((message, i) => {
-                return <Message key={i} model={message} />;
-              })}
-            </MessageList>
-            <MessageInput
-              placeholder="Type message here.."
-              onSend={handleSend}
-            />
-          </ChatContainer>
-        </MainContainer>
+<div className="flex flex-col h-full bg-neutral p-6">
+  <div className="flex flex-col overflow-y-auto mb-4 flex-grow justify-end">
+    {messages.map((message, i) => (
+      <div
+        key={i}
+        className={`flex ${
+          message.direction === "incoming" ? "flex-row-reverse" : ""
+        } items-end mb-4`}
+      >
+        <div
+          className={`p-2 rounded-lg ${
+            message.direction === "incoming"
+              ? "bg-green-200 text-green-800"
+              : "bg-blue-200 text-blue-800"
+          }`}
+        >
+          {message.message}
         </div>
+      </div>
+    ))}
+
+        {typing && (
+          <div className="self-center mb-4 font-white">
+            <span className="text-gray-600">Assistant is typing...</span>
+          </div>
+        )}
+      </div>
+      <div className="mt-6">
+        <input
+          type="text"
+          className="w-full rounded-lg border p-2 bg-neutral-600"
+          placeholder="Type message here..."
+          value={inputMessage}
+          onChange={(event) => setInputMessage(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleSend(inputMessage);
+              setInputMessage("");
+            }
+          }}
+        />
+      </div>
+    </div>
   );
 }
 
