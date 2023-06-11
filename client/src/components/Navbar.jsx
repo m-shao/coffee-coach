@@ -6,7 +6,7 @@ import { useState, useEffect} from 'react';
 
 import LoginButton from './LoginButton'
 
-function Navbar() {
+function Navbar({setPage}) {
     const { isAuthenticated } = useAuth0();
     // useEffect(() => {
         
@@ -24,7 +24,7 @@ function Navbar() {
                     <li>Home</li>
                     <li>Dashboard</li>
                     <li className='bg-neutral-600 px-4 py-1 rounded-md'>
-                        <button className='flex items-center gap-1'>
+                        <button onClick={() => {setPage("setup")}} className='flex items-center gap-1'>
                             Start Chat <img className='h-6' src={video} alt="" />
                         </button>
                     </li>
