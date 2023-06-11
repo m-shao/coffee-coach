@@ -101,7 +101,7 @@ function ChatAI() {
   }
 
   return (
-    <div className="App">
+    <div className="App h-max">
         <MainContainer>
           <ChatContainer>
             <MessageList
