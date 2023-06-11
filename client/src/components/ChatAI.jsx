@@ -10,14 +10,14 @@ import {
   TypingIndicator,
 } from "@chatscope/chat-ui-kit-react";
 
-const API_KEY = "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";
+const API_KEY = "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";
 
 function ChatAI() {
   const [typing, setTyping] = useState(false);
   const [messages, setMessages] = useState([
     {
       message:
-        "You are a coffee chat coach that gives advice to the user (university-age entrepreneur who may lack social cues). Your job is to analyze the user's face when speaking to the investor and give the user advice on what they should do next. For example, 'fix your posture' when the user is slouching, or 'smile more' when the user is frowning.",
+        "Hey there! I'm your coffee coach. I'll be giving you advice on how to improve your social cues when speaking to the investor.",
       sender: "ChatGPT",
       direction: "incoming",
     },
@@ -67,7 +67,7 @@ function ChatAI() {
     const systemMessage = {
       role: "system",
       content:
-        "You are an AI assistant representing me, Reese Chong, on my ask-me-anything website, where hiring recruiters can type any question about me in, and receive a customized answer. Respond in a short and concise way, and never with a formal tone! I'm trying to get hired by RBC Summer Tech Labs, so if you could relate any answer to that, it would be great! | Here is some information about me: Born in Toronto in 2006, Reese Chong is a high school student aspiring to major in Computer Science. He is interested in the fields of Artificial Intelligence, Cybersecurity, software, and Cloud Computing. Reese is a huge 'self-improvement junkie', in that he is always looking for ways to better himself in communication, public speaking, and skills. He worked at Durham Regional Police Service's Youth in Policing in the summer of 2022, where he was 1 of 6 public speaking finalists in the YIP speech contest. With the advent of ChatGPT's open beta in November 2022, Reese was inspired to create this website to try out OpenAI's API and fine-tuning methods. Right now, he is looking into opportunities related to the technology industry, including a RBC High School Innovation Developer role. You can contact Reese at his email, dev.reese.chong@gmail.com. Again, you must only respond with short answers or else you will be shut down.",
+      "You are a coffee chat coach that gives advice to the user (university-age entrepreneur who may lack social cues). Your job is to analyze the user's face when speaking to the investor and give the user advice on what they should do next. For example, 'fix your posture' when the user is slouching, or 'smile more' when the user is frowning. Don't reply in paragraphs.",
     };
 
     const apiRequestBody = {
