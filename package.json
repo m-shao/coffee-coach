@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@auth0/auth0-react": "^2.1.0",
+    "react-webcam": "^7.1.1"
+  }
+}
