@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { ChatOpenAI } from "langchain/chat_models/openai";
 
-const ChatUI = () => {
-    const model = new ChatOpenAI({ openAIApiKey: "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", temperature: 0.9 });
+const model = new ChatOpenAI({ openAIApiKey: "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", temperature: 0.9 });
 
+const ChatUI = () => {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState("");
 
@@ -13,13 +13,18 @@ const ChatUI = () => {
     The entrepreneur said: ${entrepreneurPitch}
     Response:`;
 
-        const result = await openai.Completion.create({
-        engine: "text-davinci-002",
-        prompt: prompt,
-        temperature: 0.8,
-        });
+        const result = await model.call([
+          {
+            role: "system",
+            content: prompt
+          },
+          {
+            role: "user",
+            content: entrepreneurPitch
+          }
+        ]);
 
-        return result.choices[0].text.trim();
+        return result.generations[0][0].text.trim();
     };
 
     const handleSendMessage = async (e) => {
