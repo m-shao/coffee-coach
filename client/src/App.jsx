@@ -1,9 +1,8 @@
+import ChatUI from './components/ChatUI';
 
 function App() {
     return (
-        <div className='App text-red-300'>
-            hello there
-        </div>
+        <ChatUI/>
     )
 }
 
