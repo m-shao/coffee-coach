@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import ChatAI from './components/ChatAI';
 import Call from  './components/Call'
 import SetupPage from  './components/SetupPage'
 

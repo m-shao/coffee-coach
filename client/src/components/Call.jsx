@@ -5,6 +5,7 @@ import share from '../images/share.svg'
 import share2 from '../images/share2.svg'
 import volume from '../images/volume.svg'
 
+import ChatAI from './ChatAI'
 import person1 from '../images/image 3.png'
 import Webcam from 'react-webcam';
 
@@ -61,7 +62,10 @@ function Call() {
                     </div>
                 </div>
                 <div className='w-1/4 h-full justify-center rounded-md'>
-                    <div className='w-full h-full bg-neutral-800 rounded-md'></div>
+                    {/* chat here */}
+                    <div className='w-full h-4/5 bg-neutral-800 rounded-md'>
+                        <ChatAI/>
+                    </div>
                 </div>
             </div>
     </div>
